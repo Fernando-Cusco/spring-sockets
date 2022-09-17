@@ -33,7 +33,34 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    const data = {
+        "applicationID": "9",
+        "applicationName": "Testjuandi",
+        "deviceName": "Nodo1",
+        "devEUI": "iy3cj9AP2C8=",
+        "rxInfo": [
+            {
+                "gatewayID": "JOEk//7zYMM=",
+                "time": "2022-08-01T22:41:43.617449Z",
+                "timeSinceGPSEpoch": "1343428921.617s",
+                "rssi": -78,
+                "loRaSNR": 13.5,
+                "channel": 6,
+                "rfChain": 1,
+                "board": 0,
+                "antenna": 0,
+                "location": {
+                    "latitude": -2.88678,
+                    "longitude": -78.99069,
+                    "altitude": 2550,
+                    "source": "UNKNOWN",
+                    "accuracy": 0
+                }
+            }
+        ]
+    };
+    stompClient.send("/app/hello", {}, JSON.stringify(data));
+    // stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
 function showGreeting(message) {
